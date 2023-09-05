@@ -29,6 +29,9 @@ DAY1 =
 
 The corrected formula includes an additional filter condition to account for products that are not discontinued.
 
+![DAY 1](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/f5dd6528-1f13-42ee-b510-3b1d728e6b99)
+
+
 
 #                       DAY 2
 
@@ -43,6 +46,11 @@ DAY2 =
         TOPN(1,Products,Products[UnitPrice],DESC))
 ```
 
+The answer is cote de Baye
+
+![DAY2](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/31287b7b-818e-481d-b697-26a3cdce6c16)
+
+
 ### Explanation of Code 
 
 1. `CALCULATE`: This is a DAX function used to modify the filter context for a calculation. It's used here to perform calculations based on certain conditions.
@@ -56,4 +64,13 @@ DAY2 =
    - `Products[UnitPrice]`: This indicates that you want to use the "UnitPrice" column as the criterion for ranking.
    - `DESC`: This specifies that you want to rank the values in descending order, meaning you want the highest value.
 
+After dedicating time to comprehend the aforementioned DAX formula, I devised an alternative approach that yielded the same outcome.
 
+```DAX
+DAY2 ALT =
+    CALCULATE(
+    SELECTEDVALUE(Products[ProductName]),
+    FILTER(Products,Products[UnitPrice]=MAX(Products[UnitPrice])))
+```
+
+![DAY2 ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/c90cac7d-4a0a-400f-ab32-70ffc98324b3)
