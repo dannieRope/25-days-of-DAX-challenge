@@ -142,3 +142,29 @@ DAY 5 = CALCULATE(
 ```
 
 ![DAY5](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/fa715e33-691f-43b7-a51d-ab5696936d9a)
+
+
+#                       DAY 6
+
+
+## Question: What is the average number of products (not quantity) per order?
+
+
+
+#                       DAY 7
+
+
+## Question: What is the order value in $ of open orders? (not Shipped yet)
+
+
+
+#                       DAY 8
+
+
+## Question: How many orders are "single items" (only one product ordered)?
+
+
+#                       DAY 9
+
+
+## Question: Average sales per transaction (orderId) for "Romero y Tomillo"
