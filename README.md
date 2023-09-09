@@ -150,12 +150,23 @@ DAY 5 = CALCULATE(
 ## Question: What is the average number of products (not quantity) per order?
 
 
+```
+DAY6 = 
+ AVERAGEX(
+     SUMMARIZE(Orders,Orders[OrderID],"productCount",COUNT(Orders[ProductID])),
+     [productCount])
+```
 
 #                       DAY 7
 
 
 ## Question: What is the order value in $ of open orders? (not Shipped yet)
 
+```
+DAY7 = CALCULATE(
+       SUM(Orders[_Sales]),
+       FILTER(Orders,Orders[ShippedDate] = BLANK()))
+```
 
 
 #                       DAY 8
@@ -163,8 +174,73 @@ DAY 5 = CALCULATE(
 
 ## Question: How many orders are "single items" (only one product ordered)?
 
+```
+DAY8 = CALCULATE(
+        COUNT(Orders[OrderID]),
+        FILTER(SUMMARIZE(Orders,Orders[OrderID],"productCount",COUNT(Orders[ProductID])),
+        [productCount] = 1))
+```
 
 #                       DAY 9
 
-
 ## Question: Average sales per transaction (orderId) for "Romero y Tomillo"
+
+```
+DAY9 = CALCULATE(
+        AVERAGEX(VALUES(Orders[OrderID]),[Total sales]),
+        FILTER(Customers,Customers[CompanyName] = "Romero y tomillo"))
+```
+
+
+```
+DAY9ALT = CALCULATE(
+        DIVIDE(SUM(Orders[_Sales]),DISTINCTCOUNT(Orders[OrderID]),0),
+        FILTER(Orders,Orders[CustomerID] = "ROMEY"))
+```
+
+
+#                       DAY 10
+
+## Question: How many days have passed since "North/South" last purchased?
+
+```
+DAY10 = CALCULATE(
+        DATEDIFF(MAX(Orders[OrderDate]),TODAY(),DAY),
+        FILTER(Customers,Customers[CompanyName] = "North/South"))
+```
+
+
+#                       DAY 11
+
+## Question: How many customers have ordered only once?
+
+```
+DAY11 = CALCULATE(
+        DISTINCTCOUNT(Orders[CustomerID]),
+        FILTER(SUMMARIZE(Orders,Orders[CustomerID],"OrdersCount",DISTINCTCOUNT(Orders[OrderID])),
+        [OrdersCount] = 1))
+
+```
+#                       DAY 12
+
+## Question: How many new customers (first purchase in the year 2021)?
+
+```
+
+DAY12 = CALCULATE(
+        DISTINCTCOUNT(Orders[CustomerID]),
+        FILTER(SUMMARIZE(Orders,Orders[CustomerID],"firstDate",FIRSTDATE(Orders[OrderDate])),
+        YEAR([firstDate]) = 2021))
+```
+
+#                       DAY 13
+
+## Question: how many lost customers (no purchases in currenty year)?
+
+
+```
+DAY13 = CALCULATE(
+        DISTINCTCOUNT(Orders[CustomerID]),
+        FILTER(SUMMARIZE(Orders,Orders[CustomerID],"lastDate",LASTDATE(Orders[OrderDate])),
+        YEAR([lastDate]) <> 2021))
+```
