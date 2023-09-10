@@ -149,7 +149,7 @@ DAY 5 = CALCULATE(
 
 ## Question: What is the average number of products (not quantity) per order?
 
-
+Answer: `2.60`
 ```
 DAY6 = 
  AVERAGEX(
@@ -157,10 +157,14 @@ DAY6 =
      [productCount])
 ```
 
+![DAY6](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/18151834-6e55-4a41-b4ee-73ce91a78784)
+
+
 #                       DAY 7
 
-
 ## Question: What is the order value in $ of open orders? (not Shipped yet)
+
+Answer: `$27.44K`
 
 ```
 DAY7 = CALCULATE(
@@ -168,11 +172,15 @@ DAY7 = CALCULATE(
        FILTER(Orders,Orders[ShippedDate] = BLANK()))
 ```
 
+![DAY7](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/96b593d6-3407-47e2-9ab9-2305ae7681d2)
+
 
 #                       DAY 8
 
 
 ## Question: How many orders are "single items" (only one product ordered)?
+
+Answer: `137`
 
 ```
 DAY8 = CALCULATE(
@@ -181,15 +189,22 @@ DAY8 = CALCULATE(
         [productCount] = 1))
 ```
 
+![DAY8](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/75883610-7473-4d86-85b3-13bb5dbb6aee)
+
+
 #                       DAY 9
 
 ## Question: Average sales per transaction (orderId) for "Romero y Tomillo"
+
+Answer: `293.46`
 
 ```
 DAY9 = CALCULATE(
         AVERAGEX(VALUES(Orders[OrderID]),[Total sales]),
         FILTER(Customers,Customers[CompanyName] = "Romero y tomillo"))
 ```
+
+![DAY9](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/43b6063f-a1d1-4dc4-9955-b187f62dd38a)
 
 
 ```
@@ -198,10 +213,14 @@ DAY9ALT = CALCULATE(
         FILTER(Orders,Orders[CustomerID] = "ROMEY"))
 ```
 
+![DAY9ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/740c5490-ecf2-4b5d-a4e2-78beb71b7236)
+
 
 #                       DAY 10
 
 ## Question: How many days have passed since "North/South" last purchased?
+
+Answer: `656`
 
 ```
 DAY10 = CALCULATE(
@@ -209,10 +228,15 @@ DAY10 = CALCULATE(
         FILTER(Customers,Customers[CompanyName] = "North/South"))
 ```
 
+![DAY10](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/8e309d68-b49c-49a5-868f-56e8ac1c9d92)
+
+
 
 #                       DAY 11
 
 ## Question: How many customers have ordered only once?
+
+Answer: `1`
 
 ```
 DAY11 = CALCULATE(
@@ -221,9 +245,15 @@ DAY11 = CALCULATE(
         [OrdersCount] = 1))
 
 ```
+
+![DAY11](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/01968b51-1425-492c-b719-aa0de53d421e)
+
+
 #                       DAY 12
 
 ## Question: How many new customers (first purchase in the year 2021)?
+
+Answer: `293.46`
 
 ```
 
@@ -233,10 +263,14 @@ DAY12 = CALCULATE(
         YEAR([firstDate]) = 2021))
 ```
 
+![DAY12](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/938f31a3-cff3-4217-81d0-f298e5bbb99b)
+
+
 #                       DAY 13
 
 ## Question: how many lost customers (no purchases in currenty year)?
 
+Answer: `2`
 
 ```
 DAY13 = CALCULATE(
@@ -244,3 +278,4 @@ DAY13 = CALCULATE(
         FILTER(SUMMARIZE(Orders,Orders[CustomerID],"lastDate",LASTDATE(Orders[OrderDate])),
         YEAR([lastDate]) <> 2021))
 ```
+![DAY13](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/5b363395-4f05-4fa5-8288-f3786a78d06e)
