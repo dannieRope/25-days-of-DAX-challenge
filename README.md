@@ -2,6 +2,28 @@ I took part in the "25 Days of DAX Fridays! Challenge – Ed1: NorthWind Company
 
 For this exercise, a modified version of the Northwind Dataset was made available. This dataset can be downloaded [via this link](https://curbal.com/wp-content/uploads/2021/12/Northwind-challenge_exercise-file.zip)
 
+# THE DATASET 
+
+The Northwind database contains the sales data for a fictitious company called “Northwind Traders,” which imports and exports specialty foods from around the world. 
+The Northwind database is an excellent tutorial schema for a small-business ERP, with customers, orders, inventory, purchasing, suppliers, shipping, employees, and single-entry accounting.
+
+The Northwind dataset includes sample data for the following.
+
+`Suppliers:` Suppliers and vendors of Northwind
+
+`Customers:` Customers who buy products from Northwind
+
+`Employees:` Employee details of Northwind traders
+
+`Products:` Product information
+
+`Shippers:` The details of the shippers who ship the products from the traders to the end-customers
+
+`Orders and Order_Details:` Sales Order transactions taking place between the customers & the company
+
+For the purpose of this exercise, the dataset has been modified and loaded into PowerBI Desktop.
+ 
+
 
 #                       DAY 1
 
