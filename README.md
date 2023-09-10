@@ -22,7 +22,12 @@ The Northwind dataset includes sample data for the following.
 `Orders and Order_Details:` Sales Order transactions taking place between the customers & the company
 
 For the purpose of this exercise, the dataset has been modified and loaded into PowerBI Desktop.
- 
+
+
+
+*how the data model looks like*
+
+![northwind Data Model](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/98023d50-1376-4c9c-a194-00d6354e839c)
 
 
 #                       DAY 1
