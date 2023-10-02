@@ -428,6 +428,7 @@ DAY22 =
 
 ```
 
+![DAY22](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/32dfc794-c229-45d9-9159-bc07e48c5741)
 
 
 #                       DAY 23
@@ -469,10 +470,36 @@ DAY24 =
                      SUMMARIZE(Orders,Employees[Full Name],'Calendar'[Year],"sales",SUM(Orders[_Sales])),'Calendar'[Year]=2021 && [sales] > 100000))
 ```
 
+![DAY24](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/87323053-d216-458b-b575-e2da5ebe57b7)
 
-#                       DAY 25
+
+```
+DAYALT24 = 
+CALCULATE(
+COUNTROWS(
+Filter(VALUES(Employees[EmployeeID]), [Total sales] > 100000)),'Calendar'[Year] = 2021)
+
+```
+![DAY24ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/83a3d82f-16a9-4706-9583-d570036ed61d)
+
+
+#                        DAY 25
 
 ## Question: How many employees got hired in 1994?
 
-Answer: `2`
+Answer: `3`
+
+```
+
+DAY25 = 
+CALCULATE(COUNTA(Employees[EmployeeID]),
+YEAR(Employees[HireDate]) = 1994)
+
+```
+
+![DAY25](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/0c829fd1-e75f-44b6-868e-38508a9fb024)
+
+
+
+It was an amazing journey that exposed me to a lot of new DAX functions, which I believe will help me hone my DAX skills, answer complex business questions, and make informed business decisions.
 
