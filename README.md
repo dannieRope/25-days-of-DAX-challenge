@@ -314,7 +314,10 @@ DAY13 = CALCULATE(
 
 ## Question:how many customers have never purchased Queso Cabrales?
 
-Answer: `2`
+Answer: `59`
+
+![DAY14](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/1e962e9b-7a24-4c94-a52c-43c1ef40098c)
+
 
 
 
@@ -322,32 +325,54 @@ Answer: `2`
 
 ## Question: How many customers have purchased only Queso Cabrales?
 
-Answer: `2`
+Answer: `5`
+
+![DAY15](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/57fffd72-8c7c-42f7-8b9b-187a166eee48)
+
 
 #                       DAY 16
 
 ## Question: How many products are out of stock?
 
-Answer: `2`
+Answer: `5`
+
+![DAY16](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/cc69c308-09b7-4435-802c-c49303d56798)
+
+
+![DAY16ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/6d60b9ff-4156-4b77-8746-c12508163e95)
 
 
 #                       DAY 17
 
 ## Question: How many products need to be restocked (based on restock level)?
 
-Answer: `2`
+Answer: `18`
+
+![DAY17](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/6848f1ad-807a-4b7d-9ae6-ef542e34ab1b)
+
+
+
+![DAY17ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/7604f4f7-6acd-4114-9b0a-a9171d6cc98f)
+
 
 #                       DAY 18
 
 ## Question: How many products on order do we need to restock?
 
-Answer: `2`
+Answer: `14`
+
+![DAY18](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/bd4fe4b2-dddc-40ed-895f-ab0270513efd)
+
+
+
+
+![DAY18ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/a0a009a8-f55d-441b-a8ca-f7ee8725e97b)
 
 #                       DAY 19
 
 ## Question: What is the stocked value of the discontinued products?
 
-Answer: `2`
+Answer: `$4.45k`
 
 ```
 DAY19 = 
@@ -355,11 +380,13 @@ CALCULATE(SUMX(Products,[Stocked units]*Products[Unit Price]), Products[Disconti
 
 ```
 
+![DAY19](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/c67b9c92-8248-4319-a77e-5ce1ff703346)
+
 #                       DAY 20
 
 ## Question: Which vendor has the highest stocked value?
 
-Answer: `2`
+Answer: `Aux joyeux ecclesiatiques`
 
 ```
 DAY20 = 
@@ -369,11 +396,13 @@ TOPN(1,SUMMARIZE(Products,Suppliers[CompanyName],"StockValue",SUMX(Products,Prod
 
 ```
 
+![DAY20](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/b08d707d-3e56-4313-b545-87ff5a93837f)
+
 #                       DAY 21
 
 ## Question: How many employees (%) are female?
 
-Answer: `2`
+Answer: `55.6%`
 
 ```
 DAY21 = 
@@ -382,6 +411,8 @@ DAY21 =
                                 Employees[Gender] = "female")
     RETURN DIVIDE(femaleCount,employeeCount,0)
 ```
+
+![DAY21](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/de7e0afd-8bd3-4633-982f-479471bcd08a)
 
 
 #                       DAY 22
@@ -397,11 +428,13 @@ DAY22 =
 
 ```
 
+
+
 #                       DAY 23
 
 ## Question:Which employee had the highest sales in 2021?
 
-Answer: `2`
+Answer: `Nancy Davolio`
 
 ```
 DAY23 = 
@@ -410,6 +443,9 @@ DAY23 =
 
 ```
 
+![DAY23](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/de2bd93f-63dd-400b-a5b2-e181fdbd7166)
+
+
 ```
 DAY23ALT = 
 CALCULATE(SELECTEDVALUE(Employees[Full Name]),
@@ -417,11 +453,13 @@ TOPN(1,Employees,CALCULATE([Total sales],'Calendar'[Year] = 2021),DESC))
 
 ```
 
+![DAY23ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/2b3157f3-c98a-4ff9-89a7-4592849cb604)
+
 #                       DAY 24
 
 ## Question: How many employees sold over $100k in 2021?
 
-Answer: `2`
+Answer: `4`
 
 ```
 DAY24 = 
