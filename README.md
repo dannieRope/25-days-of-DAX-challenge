@@ -308,3 +308,133 @@ DAY13 = CALCULATE(
         YEAR([lastDate]) <> 2021))
 ```
 ![DAY13](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/5b363395-4f05-4fa5-8288-f3786a78d06e)
+
+
+#                       DAY 14
+
+## Question:how many customers have never purchased Queso Cabrales?
+
+Answer: `2`
+
+
+
+#                       DAY 15
+
+## Question: How many customers have purchased only Queso Cabrales?
+
+Answer: `2`
+
+#                       DAY 16
+
+## Question: How many products are out of stock?
+
+Answer: `2`
+
+
+#                       DAY 17
+
+## Question: How many products need to be restocked (based on restock level)?
+
+Answer: `2`
+
+#                       DAY 18
+
+## Question: How many products on order do we need to restock?
+
+Answer: `2`
+
+#                       DAY 19
+
+## Question: What is the stocked value of the discontinued products?
+
+Answer: `2`
+
+```
+DAY19 = 
+CALCULATE(SUMX(Products,[Stocked units]*Products[Unit Price]), Products[Discontinued] = TRUE())
+
+```
+
+#                       DAY 20
+
+## Question: Which vendor has the highest stocked value?
+
+Answer: `2`
+
+```
+DAY20 = 
+CALCULATE(
+SELECTEDVALUE(Suppliers[CompanyName]),
+TOPN(1,SUMMARIZE(Products,Suppliers[CompanyName],"StockValue",SUMX(Products,Products[Stocked units]*Products[Unit Price])),[StockValue],DESC))
+
+```
+
+#                       DAY 21
+
+## Question: How many employees (%) are female?
+
+Answer: `2`
+
+```
+DAY21 = 
+    VAR employeeCount = COUNTA(Employees[EmployeeID])
+    VAR femaleCount = CALCULATE( COUNTA(Employees[EmployeeID]),
+                                Employees[Gender] = "female")
+    RETURN DIVIDE(femaleCount,employeeCount,0)
+```
+
+
+#                       DAY 22
+
+## Question: How many employees are 60 years or over?
+
+Answer: `2`
+
+```
+DAY22 = 
+    CALCULATE( COUNT(Employees[EmployeeID]),
+               FILTER(Employees,DATEDIFF(Employees[BirthDate],TODAY(),YEAR) >=60))
+
+```
+
+#                       DAY 23
+
+## Question:Which employee had the highest sales in 2021?
+
+Answer: `2`
+
+```
+DAY23 = 
+    CALCULATE( SELECTEDVALUE(Employees[Full Name]),
+    TOPN(1,FILTER(SUMMARIZE(Orders,Employees[Full Name],'Calendar'[Year],"sales",SUM(Orders[_Sales])),'Calendar'[Year]=2021),   [sales],DESC))
+
+```
+
+```
+DAY23ALT = 
+CALCULATE(SELECTEDVALUE(Employees[Full Name]),
+TOPN(1,Employees,CALCULATE([Total sales],'Calendar'[Year] = 2021),DESC))
+
+```
+
+#                       DAY 24
+
+## Question: How many employees sold over $100k in 2021?
+
+Answer: `2`
+
+```
+DAY24 = 
+    CALCULATE( 
+              COUNTA(Employees[Full Name]),
+              FILTER(
+                     SUMMARIZE(Orders,Employees[Full Name],'Calendar'[Year],"sales",SUM(Orders[_Sales])),'Calendar'[Year]=2021 && [sales] > 100000))
+```
+
+
+#                       DAY 25
+
+## Question: How many employees got hired in 1994?
+
+Answer: `2`
+
