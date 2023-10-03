@@ -339,6 +339,10 @@ Answer: `5`
 ![DAY16](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/cc69c308-09b7-4435-802c-c49303d56798)
 
 
+```
+DAY16ALT = CALCULATE(COUNTA(Products [ProductID]),FILTER(Products, Products [UnitsInStock]=0))
+```
+
 ![DAY16ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/6d60b9ff-4156-4b77-8746-c12508163e95)
 
 
@@ -348,9 +352,17 @@ Answer: `5`
 
 Answer: `18`
 
+```
+DAY17 = COUNTROWS (FILTER(SUMMARIZE (Products, Products [ProductID]), Products [Stocked units]< [Restock level]))
+```
+
+
 ![DAY17](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/6848f1ad-807a-4b7d-9ae6-ef542e34ab1b)
 
-
+```
+DAY17ALT = 
+CALCULATE (COUNTA (Products [ProductID]), FILTER(Products, Products [Stocked units]< [Restock level]))
+```
 
 ![DAY17ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/7604f4f7-6acd-4114-9b0a-a9171d6cc98f)
 
@@ -361,9 +373,17 @@ Answer: `18`
 
 Answer: `14`
 
+```
+DAY18 = COUNTROWS (FILTER(SUMMARIZE (Products, Products [ProductID]), Products [Stocked units]< Products [Units In Order]))
+```
+
 ![DAY18](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/bd4fe4b2-dddc-40ed-895f-ab0270513efd)
 
-
+```
+DAY18ALT = 
+CALCULATE (COUNTA(Products[ProductID]),
+FILTER(Products, Products [Stocked units] < Products [Units In Order]))
+```
 
 
 ![DAY18ALT](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/a0a009a8-f55d-441b-a8ca-f7ee8725e97b)
