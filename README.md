@@ -316,6 +316,14 @@ DAY13 = CALCULATE(
 
 Answer: `59`
 
+```
+DAY14 = 
+VAR  allcustomers = DISTINCTCOUNT (Customers [CustomerID])
+VAR  qcustomers = CALCULATE(
+                            DISTINCTCOUNT (Orders [CustomerID]),Products[ProductName]= "Queso Cabrales")
+RETURN allcustomers - qcustomers
+```
+
 ![DAY14](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/1e962e9b-7a24-4c94-a52c-43c1ef40098c)
 
 
@@ -327,6 +335,16 @@ Answer: `59`
 
 Answer: `5`
 
+```
+DAV15 = 
+VAR oneproduct =
+SUMMARIZE(FILTER(SUMMARIZE(Orders,Orders[CustomerID],Orders[OrderID],"product_count",COUNTA(Orders[OrderID])),
+[product_count] = 1),Orders [CustomerID],Orders[OrderID])
+VAR Qproduct =
+SUMMARIZE(FILTER(SUMMARIZE(Orders,Orders[CustomerID],Orders[OrderID], Orders [ProductID]),Orders[ProductID] = 11), Orders[CustomerID],Orders[OrderID])
+return COUNTROWS(INTERSECT(oneproduct, Qproduct))
+```
+
 ![DAY15](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/57fffd72-8c7c-42f7-8b9b-187a166eee48)
 
 
@@ -335,6 +353,11 @@ Answer: `5`
 ## Question: How many products are out of stock?
 
 Answer: `5`
+
+```
+DAY16 = 
+COUNTROWS(FILTER(SUMMARIZE(Products, Products [ProductID], Products [UnitsInStock]), Products [UnitsInStock] = 0))
+```
 
 ![DAY16](https://github.com/dannieRope/25-days-of-DAX-challenge/assets/132214828/cc69c308-09b7-4435-802c-c49303d56798)
 
